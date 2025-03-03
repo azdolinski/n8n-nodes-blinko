@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "n8n nodes for Blinko API",
   "keywords": [
+    "n8n",
     "n8n-nodes-blinko",
     "blinko"
   ],
@@ -14,19 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azdolinski/n8n-nodes-blinko.git"
+    "url": "git+https://github.com/azdolinski/n8n-nodes-blinko.git"
   },
   "engines": {
     "node": ">=18.10"
   },
   "main": "index.js",
   "scripts": {
+    "dev": "npm run watch",
     "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
-    "prepublishOnly": "npm run build && npm run lint",
     "nodelinter": "nodelinter",
     "watch": "tsc --watch"
   },
