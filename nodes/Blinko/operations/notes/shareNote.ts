@@ -46,13 +46,13 @@ export async function shareNote(
 	if (shareNote && jsonData.expireAt) {
 		requestItem.meta = {
 			values: {
-				expireAt: ["Date"],
+				expireAt: ['Date'],
 			},
 		};
 	}
 	
 	// Dodaj element do batcha
-	batchData["0"] = requestItem;
+	batchData['0'] = requestItem;
 
 	const response = await this.helpers.httpRequest({
 		method: 'POST',

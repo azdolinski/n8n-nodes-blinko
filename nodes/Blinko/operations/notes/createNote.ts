@@ -38,14 +38,14 @@ export async function createNote(
 		name: a.name,
 		path: a.path,
 		size: a.size,
-		type: a.type
+		type: a.type,
 	}));
 
 	// Simplified batch structure without meta values
 	const batchData = {
-		"0": {
-			json: jsonData
-		}
+		'0': {
+			json: jsonData,
+		},
 	};
 
 	const response = await this.helpers.httpRequest({

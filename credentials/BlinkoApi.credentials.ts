@@ -46,7 +46,7 @@ export class BlinkoApi implements ICredentialType {
 			method: 'POST',
 			body: {
 				page: 1,
-				size: 1
+				size: 1,
 			},
 			headers: {
 				'Authorization': '={{$credentials.apiKey}}',

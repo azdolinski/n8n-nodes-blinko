@@ -23,7 +23,7 @@ export async function deleteNote(
 	};
 	
 	// Dodaj element do batcha
-	batchData["0"] = requestItem;
+	batchData['0'] = requestItem;
 
 	// Call the API but don't use the response
 	await this.helpers.httpRequest({

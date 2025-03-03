@@ -6,10 +6,10 @@ import { getById } from './getById';
 import { shareNote } from './shareNote';
 
 export {
-  createNote,
-  updateNote,
-  deleteNote,
-  getNotes,
-  getById,
-  shareNote,
+	createNote,
+	updateNote,
+	deleteNote,
+	getNotes,
+	getById,
+	shareNote,
 };

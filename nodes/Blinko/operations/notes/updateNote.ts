@@ -72,7 +72,7 @@ export async function updateNote(
 	};
 	
 	// Dodaj element do batcha
-	batchData["0"] = requestItem;
+	batchData['0'] = requestItem;
 
 	const response = await this.helpers.httpRequest({
 		method: 'POST',
