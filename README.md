@@ -1,6 +1,6 @@
 # n8n-nodes-blinko
 
-This is an n8n community node for interacting with the Blinko API. It provides functionality to create, update, delete, and retrieve notes from a Blinko server.
+This is an n8n community node for interacting with the Blinko API. It provides functionality to create, update, delete, and retrieve notes, manage attachments, and handle tags in a Blinko server.
 
 ## Installation
 
@@ -17,29 +17,31 @@ Follow these steps to install this custom node in your n8n instance:
 
 To use this node, you need to set up Blinko API credentials:
 
-1. **Base URL**: The URL of your Blinko server (e.g., http://localhost:3000)
+1. **Base URL**: The URL of your Blinko server (e.g., https://blinko.zdolny.top)
 2. **API Key**: Your Blinko API key for authentication
 
 ## Node Operations
 
 The Blinko node provides the following resources and operations:
 
-### Note Resource
+### Notes Resource
 
 - **Create**: Create a new note in Blinko
 - **Update**: Update an existing note
 - **Delete**: Delete one or more notes
-- **Get Many**: Retrieve multiple notes with filtering options
+- **Share**: Share a note with other users
+- **Get Notes**: Retrieve multiple notes with filtering options
+- **Get By ID**: Retrieve a specific note by its ID
 
 ### Attachments Resource
 
-The Attachments resource provides operations for managing files in the Blinko system:
-
 - **Upload**: Upload a file to the Blinko server
-- **Delete**: Delete a file from the Blinko server
-- **Rename**: Rename an existing file
-- **Move**: Move a file to a different location
-- **List**: List files in a directory
+- **List**: List attachments associated with notes
+
+### Tags Resource
+
+- **List**: Get all tags with optional filtering
+- **Delete**: Delete a tag with options to delete or preserve associated notes
 
 ### Note Types
 
@@ -48,78 +50,56 @@ When creating or updating notes, you can specify the note type:
 - **BLINKO (0)**: Blinko note type
 - **NOTE (1)**: Regular note type
 
-### Attachments
+## Batch Operations
 
-You can attach files to notes when creating or updating them:
+Some operations in the Blinko API use a batch format:
 
-1. Add a node that outputs binary data before the Blinko node (e.g., HTTP Request, Read Binary File)
-2. Connect it to the Blinko node
-3. Specify the binary property name containing the file data
-4. Execute the workflow
+1. URL includes the parameter `?batch=1`
+2. Request body has the format: `{"0": {"json": {...}}}`
+3. Response from the server has the format: `[{"result": {"data": ...}}]`
 
-The file attachment process works as follows:
-- The binary data is uploaded to the Blinko server using the `/api/file/upload` endpoint
-- The uploaded file is then associated with the note during creation or update
-- Each attachment will appear in the note with its original filename and be accessible for download
-
-The binary data should have the following properties:
-- `data`: The base64-encoded file content
-- `fileName`: The original name of the file
-- `mimeType`: The MIME type of the file
-- `fileSize`: The size of the file in bytes
+Operations that use this format include:
+- Notes creation and updates
+- Note sharing
+- Note deletion
+- Tag deletion
 
 ## Example Usage
 
 ### Create a Note
 
 1. Add a Blinko node to your workflow
-2. Select the "Note" resource
+2. Select the "Notes" resource
 3. Choose the "Create" operation
 4. Enter the note content and any additional fields
 5. Execute the workflow
 
-### Create a Note with Attachments
+### Upload an Attachment
 
 1. Add a node that provides binary data (e.g., HTTP Request, Read Binary File)
 2. Add a Blinko node to your workflow
-3. Select the "Note" resource
-4. Choose the "Create" operation
-5. Enter the note content
-6. Under "Additional Fields", add an attachment and specify the binary property
-7. Execute the workflow
+3. Select the "Attachments" resource
+4. Choose the "Upload" operation
+5. Specify the binary property containing the file data
+6. Execute the workflow
 
-### Get Notes with Filters
+### List Tags
 
 1. Add a Blinko node to your workflow
-2. Select the "Note" resource
-3. Choose the "Get Many" operation
-4. Configure filters as needed (search text, archived status, etc.)
+2. Select the "Tags" resource
+3. Choose the "List" operation
+4. Optionally add filters like name prefix
 5. Execute the workflow
 
-### Upload a File
+### Delete a Tag
 
-1. Add a Blinko node
-2. Select the 'Attachments' resource
-3. Choose the 'Upload' operation
-4. Specify the binary property containing the file data
-5. Execute the workflow
-
-### Delete a File
-
-1. Add a Blinko node
-2. Select the 'Attachments' resource
-3. Choose the 'Delete' operation
-4. Enter the file path (e.g., /api/file/filename.jpg)
-5. Execute the workflow
-
-### List Files
-
-1. Add a Blinko node
-2. Select the 'Attachments' resource
-3. Choose the 'List' operation
-4. Optionally specify a folder path, search text, and pagination options
-5. Execute the workflow
+1. Add a Blinko node to your workflow
+2. Select the "Tags" resource
+3. Choose the "Delete" operation
+4. Enter the Tag ID
+5. Choose whether to also delete associated notes
+6. Execute the workflow
 
 ## API Documentation
 
-For more information about the Blinko API, refer to the [Blinko documentation](https://github.com/blinko-io/blinko).
+For more information about the Blinko API, refer to the server code in `/opt/docker/n8n/custom-nodes/blinko/src/server/routers`.
