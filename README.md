@@ -1,5 +1,7 @@
 # n8n-nodes-blinko
 
+[![Blinko Logo](docs/img/blinko.png)](https://github.com/blinko-space/blinko)
+
 This is an n8n community node for interacting with the Blinko API. It provides functionality to create, update, delete, and retrieve notes, manage attachments, and handle tags in a Blinko server.
 
 ## Installation
