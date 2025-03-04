@@ -2,7 +2,7 @@
 
 [![Blinko Logo](docs/img/blinko.png)](https://github.com/blinko-space/blinko)
 
-This is an n8n community node for interacting with the Blinko API. It provides functionality to create, update, delete, and retrieve notes, manage attachments, and handle tags in a Blinko server.
+This is an n8n community node for interacting with the Blinko API. It provides functionality to create, update, delete, and retrieve notes, manage attachments, handle tags, and interact with comments in a Blinko server.
 
 ## Installation
 
@@ -32,6 +32,17 @@ The Blinko node provides the following resources and operations:
 - **Share**: Share a note with other users
 - **Get Notes**: Retrieve multiple notes with filtering options
 - **Get By ID**: Retrieve a specific note by its ID
+
+### Comments Resource
+
+- **Create Comment**: Create a new comment on a note with support for:
+  - Text content
+  - Optional parent comment ID for replies
+  - Optional guest name for unauthenticated comments
+- **List Comments**: Retrieve comments for a specific note with options for:
+  - Pagination control
+  - Sorting order
+  - Filtering
 
 ### Attachments Resource
 

@@ -20,6 +20,8 @@ import { listAttachments } from './operations/attachments/listAttachments';
 import { listTags } from './operations/tags/listTags';
 import { deleteTag } from './operations/tags/deleteTag';
 import { editTag } from './operations/tags/editTag';
+import { listComments } from './operations/comments/listComments';
+import { createComment } from './operations/comments/createComment';
 
 // Import descriptions
 import { description } from './descriptions';
@@ -102,7 +104,7 @@ export class Blinko implements INodeType {
 								throw new NodeOperationError(this.getNode(), `The operation "${operation}" is not supported!`);
 						}
 						break;
-						
+
 					case 'tags':
 						switch (operation) {
 							case 'list':
@@ -116,6 +118,15 @@ export class Blinko implements INodeType {
 								break;
 							default:
 								throw new NodeOperationError(this.getNode(), `The operation "${operation}" is not supported!`);
+						}
+						break;
+
+					case 'comments':
+						if (operation === 'listComments') {
+							responseData = await listComments.call(this, i, apiBaseUrl, requestOptions);
+						}
+						if (operation === 'createComment') {
+							responseData = await createComment.call(this, i, apiBaseUrl, requestOptions);
 						}
 						break;
 
