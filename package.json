@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-blinko",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "n8n nodes for Blinko API",
   "keywords": [
     "n8n",
