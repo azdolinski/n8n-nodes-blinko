@@ -2,8 +2,8 @@
 Ref: n8n-nodes-blinko/nodes/Blinko/operations/method/operationTask.ts  [just example]
 
 ## Request
+```http
 POST /api/trpc/notes.upsert?batch=1
-```json
 {
 }
 ```

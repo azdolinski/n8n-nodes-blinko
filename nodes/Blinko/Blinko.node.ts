@@ -19,6 +19,7 @@ import { uploadFile } from './operations/attachments/uploadFile';
 import { listAttachments } from './operations/attachments/listAttachments';
 import { listTags } from './operations/tags/listTags';
 import { deleteTag } from './operations/tags/deleteTag';
+import { editTag } from './operations/tags/editTag';
 
 // Import descriptions
 import { description } from './descriptions';
@@ -109,6 +110,9 @@ export class Blinko implements INodeType {
 								break;
 							case 'delete':
 								responseData = await deleteTag.call(this, i, apiBaseUrl, requestOptions);
+								break;
+							case 'edit':
+								responseData = await editTag.call(this, i, apiBaseUrl, requestOptions);
 								break;
 							default:
 								throw new NodeOperationError(this.getNode(), `The operation "${operation}" is not supported!`);

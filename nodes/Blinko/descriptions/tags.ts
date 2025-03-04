@@ -19,6 +19,12 @@ export const tagsOperations: INodeProperties[] = [
 				action: 'Delete a tag',
 			},
 			{
+				name: 'Edit',
+				value: 'edit',
+				description: 'Edit a tag',
+				action: 'Edit a tag',
+			},
+			{
 				name: 'List',
 				value: 'list',
 				description: 'Get all tags',
@@ -85,5 +91,59 @@ export const tagsFields: INodeProperties[] = [
 			},
 		},
 		description: 'Whether to also delete all notes associated with this tag',
+	},
+
+	/* -------------------------------------------------------------------------- */
+	/*                                tags:edit                                   */
+	/* -------------------------------------------------------------------------- */
+	{
+		displayName: 'Tag ID',
+		name: 'tagId',
+		type: 'number',
+		required: true,
+		default: 0,
+		displayOptions: {
+			show: {
+				resource: ['tags'],
+				operation: ['edit'],
+			},
+		},
+		description: 'The ID of the tag to edit',
+	},
+	{
+		displayName: 'Update Fields',
+		name: 'updateFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['tags'],
+				operation: ['edit'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Name',
+				name: 'name',
+				type: 'string',
+				default: '',
+				description: 'The new name for the tag',
+			},
+			{
+				displayName: 'Icon',
+				name: 'icon',
+				type: 'string',
+				default: '🏷️',
+				description: 'The new icon for the tag (typically an emoji)',
+			},
+			{
+				displayName: 'Sort Order',
+				name: 'sortOrder',
+				type: 'number',
+				default: 0,
+				description: 'The sort order value for the tag',
+			},
+		],
 	},
 ];

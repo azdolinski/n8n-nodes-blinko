@@ -14,8 +14,8 @@ POST /api/trpc/notes.upsert?batch=1
             "id": null,
             "attachments": [
                 {
-                    "name": "Blinko (2).png",
-                    "path": "/api/file/Blinko_(2)_1740959482107.png",
+                    "name": "example.png",
+                    "path": "/api/file/example_1740959482107.png",
                     "size": 5507,
                     "type": "image/png"
                 }
@@ -25,31 +25,6 @@ POST /api/trpc/notes.upsert?batch=1
             "references": [],
             "createdAt": null,
             "updatedAt": null
-        },
-        "meta": {
-            "values": {
-                "isArchived": [
-                    "undefined"
-                ],
-                "isRecycle": [
-                    "undefined"
-                ],
-                "id": [
-                    "undefined"
-                ],
-                "isTop": [
-                    "undefined"
-                ],
-                "isShare": [
-                    "undefined"
-                ],
-                "createdAt": [
-                    "undefined"
-                ],
-                "updatedAt": [
-                    "undefined"
-                ]
-            }
         }
     }
 }
@@ -100,12 +75,20 @@ POST /api/trpc/notes.upsert?batch=1
 - **Note Types**:
   - `0` = BLINKO (short-form notes)
   - `1` = NOTE (long-form documents)
-- **Tag Handling**:
-  - Input comma-separated tags are converted to hashtags in content
-  - Example: `"tags": "important,project"` → `#important #project`
 - **Attachments**:
-  - Require pre-uploaded file IDs from `/api/file/upload`
-  - Array format: `"attachments": [{"id": "1740959482107"}]`
+  - Files must be uploaded first using `/api/file/upload` endpoint
+  - Upload uses multipart/form-data format
+  - Response contains `filePath`, `fileName`, `type`, and `size`
+  - Array format for attachments: 
+    ```json
+    "attachments": [{
+        "name": "example.png",
+        "path": "/api/file/example_1740959482107.png",
+        "size": 5507,
+        "type": "image/png"
+    }]
+    ```
+  - Multiple files can be attached to a single note
 - **Dates**:
   - Use ISO 8601 format when provided
   - `createdAt`/`updatedAt` auto-generated if null

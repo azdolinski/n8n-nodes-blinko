@@ -20,7 +20,11 @@ The Blinko node provides the following resources and operations:
 
 ### Notes Resource
 
-- **Create**: Create a new note in Blinko
+- **Create**: Create a new note in Blinko with support for:
+  - Text content with optional tags (as hashtags)
+  - Multiple file attachments
+  - Note type selection (BLINKO/NOTE)
+  - Sharing and pinning options
 - **Update**: Update an existing note
 - **Delete**: Delete one or more notes
 - **Share**: Share a note with other users
@@ -29,7 +33,7 @@ The Blinko node provides the following resources and operations:
 
 ### Attachments Resource
 
-- **Upload**: Upload a file to the Blinko server
+- **Upload**: Upload files to the Blinko server (automatically handled during note creation)
 - **List**: List attachments associated with notes
 
 ### Tags Resource
