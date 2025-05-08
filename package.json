@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-blinko",
-  "version": "0.2.5",
+  "version": "0.2.4",
   "description": "n8n nodes for Blinko API",
   "keywords": [
     "n8n",
@@ -25,8 +25,8 @@
   "scripts": {
     "dev": "npm run watch",
     "build": "tsc && gulp build:icons",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
+    "lint": "eslint nodes/**/*.ts credentials/**/*.ts package.json",
+    "lintfix": "eslint nodes/**/*.ts credentials/**/*.ts package.json --fix",
     "nodelinter": "nodelinter",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build && npm run lint"
