@@ -29,10 +29,6 @@ import { description } from './descriptions';
 // Import helpers
 import { getCredentialsAndBaseUrl } from './helpers';
 
-// Credentials
-import { BlinkoApiCredentials } from '../../credentials/BlinkoApi.credentials';
-
-
 export class Blinko implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Blinko',
@@ -49,7 +45,7 @@ export class Blinko implements INodeType {
 		outputs: [{ type: NodeConnectionType.Main }],
 		credentials: [
 			{
-				name: BlinkoApiCredentials.name,
+				name: 'blinkoApi',
 				required: true,
 			},
 		],

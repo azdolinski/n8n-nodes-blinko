@@ -17,7 +17,7 @@ export async function getById(
 	const jsonData: IDataObject = {
 		id: parseInt(noteId, 10),
 	};
-	
+
 	queryParams.json = jsonData;
 
 	const response = await this.helpers.httpRequest({

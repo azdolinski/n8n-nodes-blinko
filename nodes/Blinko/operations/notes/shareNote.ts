@@ -62,5 +62,6 @@ export async function shareNote(
 		...requestOptions,
 	});
 
-	return response.result ? response.result.data : response[0].result.data;
+	// Always extract data from the batch response format [{ result: { data: ... }}]
+	return response[0].result.data;
 }

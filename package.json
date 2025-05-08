@@ -1,11 +1,12 @@
 {
   "name": "n8n-nodes-blinko",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "description": "n8n nodes for Blinko API",
   "keywords": [
     "n8n",
     "n8n-nodes-blinko",
-    "blinko"
+    "blinko",
+    "n8n-community-node-package"
   ],
   "license": "MIT",
   "homepage": "https://github.com/azdolinski/n8n-nodes-blinko",
@@ -18,16 +19,17 @@
     "url": "git+https://github.com/azdolinski/n8n-nodes-blinko.git"
   },
   "engines": {
-    "node": ">=18.10"
+    "node": ">=20.19.0"
   },
   "main": "index.js",
   "scripts": {
     "dev": "npm run watch",
     "build": "tsc && gulp build:icons",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
-    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
     "nodelinter": "nodelinter",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build && npm run lint"
   },
   "files": [
     "dist"
@@ -43,19 +45,23 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^18.19.99",
-    "@typescript-eslint/parser": "^8.32.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "@types/node": "^18.19.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-n8n-nodes-base": "^1.14.0",
     "gulp": "^5.0.0",
     "n8n-workflow": "^1.82.0",
-    "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "dependencies": {
+    "@types/form-data": "^2.5.2",
     "@types/mime-types": "^2.1.4",
     "form-data": "^4.0.2",
-    "tslint": "^6.1.3",
     "mime-types": "^2.1.35"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
   }
 }

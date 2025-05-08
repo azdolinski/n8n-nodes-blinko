@@ -5,8 +5,8 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class BlinkoApiCredentials implements ICredentialType {
-	name = 'BlinkoApiCredentials';
+export class BlinkoApi implements ICredentialType {
+	name = 'blinkoApi';
 	displayName = 'Blinko API';
 	documentationUrl = 'https://github.com/blinko-io/blinko';
 	properties: INodeProperties[] = [
