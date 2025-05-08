@@ -5,8 +5,8 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class BlinkoApi implements ICredentialType {
-	name = 'blinkoApi';
+export class BlinkoApiCredentials implements ICredentialType {
+	name = 'BlinkoApiCredentials';
 	displayName = 'Blinko API';
 	documentationUrl = 'https://github.com/blinko-io/blinko';
 	properties: INodeProperties[] = [
@@ -34,7 +34,7 @@ export class BlinkoApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				Authorization: '={{$credentials.apiKey}}',
+				Authorization: '={{$credentials.apiKey.toLowerCase().startsWith("bearer") ? $credentials.apiKey : "Bearer " + $credentials.apiKey}}',
 			},
 		},
 	};
@@ -49,7 +49,7 @@ export class BlinkoApi implements ICredentialType {
 				size: 1,
 			},
 			headers: {
-				'Authorization': '={{$credentials.apiKey}}',
+				'Authorization': '={{$credentials.apiKey.toLowerCase().startsWith("bearer") ? $credentials.apiKey : "Bearer " + $credentials.apiKey}}',
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 			},

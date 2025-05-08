@@ -41,7 +41,7 @@ export async function listComments(
 		url: '/api/trpc/comments.list',
 		qs: {
 			batch: 1,
-			input: JSON.stringify(batchData)
+			input: JSON.stringify(batchData),
 		},
 		...requestOptions,
 	});

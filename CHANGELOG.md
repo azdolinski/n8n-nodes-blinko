@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+
+## [0.2.3] - 2025-05-08
+
+### Fixed
+
+- Fix `Blinko API` credentials authentication without "Bearer" prefix. #1
+- Fix linting errors.
+
+### Changed
+
+- Change name of `Blinko API` credentials.
+
 ## [0.2.1] - 2025-03-04
 
 ### Added

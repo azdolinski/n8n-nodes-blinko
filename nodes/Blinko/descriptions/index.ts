@@ -1,8 +1,9 @@
 import { INodeProperties } from 'n8n-workflow';
-import { notesOperations, notesFields } from './notes';
-import { tagsOperations, tagsFields } from './tags';
-import { attachmentOperations, attachmentFields } from './attachments';
-import { commentOperations, commentFields } from './comments';
+
+import { attachmentFields, attachmentOperations } from './attachments';
+import { commentFields, commentOperations } from './comments';
+import { notesFields, notesOperations } from './notes';
+import { tagsFields, tagsOperations } from './tags';
 
 export const description: INodeProperties[] = [
 	{
