@@ -24,7 +24,7 @@ export async function getCredentialsAndBaseUrl(
 	// Common request options
 	const requestOptions = {
 		headers: {
-			'Authorization': apiKey,
+			'Authorization': apiKey.toLowerCase().startsWith('bearer ') ? apiKey : `Bearer ${apiKey}`,
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',
 		},
